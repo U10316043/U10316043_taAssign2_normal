@@ -1,0 +1,70 @@
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class pattern2 extends JPanel implements ActionListener{
+
+	static JLabel circle = new JLabel("Circle");
+	static JLabel circleradius = new JLabel("Radius");
+	static JLabel circlearea = new JLabel("Area");
+	static JLabel circleperimeter = new JLabel("perimeter");
+	static JTextField rr = new JTextField(10);
+	static JTextField aa = new JTextField(10);
+	static JTextField pp = new JTextField(10);
+	static JButton ex2 =new JButton("計算");
+	static JButton er2 = new JButton("清除");
+	int rnumber;
+
+	
+	public pattern2(){
+		circle.setBounds(10,260,50,30);
+		circleradius.setBounds(30,290,100,30);
+		circlearea.setBounds(30,345,100,30);
+		circleperimeter.setBounds(30,365,100,30);
+		rr.setBounds(100,290,50,20);
+		aa.setBounds(100,345,50,20);
+		pp.setBounds(100,365,50,20);
+		ex2.setBounds(170,290,70,20);
+		er2.setBounds(250,290,70,20);
+		ex2.addActionListener(this);
+		er2.addActionListener(this);
+
+
+		
+		this.setLayout(null);
+		this.add(circle);
+		this.add(circleradius);
+		this.add(rr);
+		this.add(circlearea);
+		this.add(aa);
+		this.add(circleperimeter);
+		this.add(pp);
+		this.add(ex2);
+		this.add(er2);
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		try{
+			if(e.getSource() == ex2 ){
+				rnumber = Integer.parseInt(rr.getText());
+				double area = rnumber*rnumber*3.14;
+				String getarea =  String.valueOf(area);
+				aa.setText(getarea);
+		
+				double perimeter = 2*3.14*rnumber;
+				String getperimeter = String.valueOf(perimeter);
+				pp.setText(getperimeter);
+			}
+			if(e.getSource() == er2 ){
+				rr.setText("");
+				aa.setText("");
+				pp.setText("");	
+				
+			}
+		}
+		catch(NumberFormatException q){
+			JOptionPane.showMessageDialog(null,"invalid","Note",JOptionPane.WARNING_MESSAGE);
+		}
+	}
+}
