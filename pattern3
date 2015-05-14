@@ -1,0 +1,72 @@
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class pattern3 extends JPanel implements ActionListener{
+
+	static JLabel triangle = new JLabel("Regular Triangle");
+	static JLabel triangleradius = new JLabel("Side");
+	static JLabel trianglearea = new JLabel("Area");
+	static JLabel triangleperimeter = new JLabel("perimeter");
+	static JTextField rrr = new JTextField(10);
+	static JTextField aaa = new JTextField(10);
+	static JTextField ppp = new JTextField(10);
+	static JButton ex3 =new JButton("計算");
+	static JButton er3 = new JButton("清除");
+	int rnumber;
+
+	
+	public pattern3(){
+		triangle.setBounds(10,495,50,30);
+		triangleradius.setBounds(30,525,100,30);
+		trianglearea.setBounds(30,580,100,30);
+		triangleperimeter.setBounds(30,600,100,30);
+		rrr.setBounds(100,525,50,20);
+		aaa.setBounds(100,580,50,20);
+		ppp.setBounds(100,600,50,20);
+		ex3.setBounds(170,525,70,20);
+		er3.setBounds(250,525,70,20);
+		ex3.addActionListener(this);
+		er3.addActionListener(this);
+
+		
+		
+
+		this.setLayout(null);
+		this.add(triangle);
+		this.add(triangleradius);
+		this.add(rrr);
+		this.add(trianglearea);
+		this.add(aaa);
+		this.add(triangleperimeter);
+		this.add(ppp);
+		this.add(ex3);
+		this.add(er3);
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		try{
+			if(e.getSource() == ex3 ){
+				rnumber = Integer.parseInt(rrr.getText());
+				double area = rnumber*rnumber*Math.sqrt(3)/4;
+				String getarea =  String.valueOf(area);
+				aaa.setText(getarea);
+		
+				double perimeter = 3*rnumber;
+				String getperimeter = String.valueOf(perimeter);
+				ppp.setText(getperimeter);
+			}
+			if(e.getSource() == er3 ){
+				rrr.setText("");
+				aaa.setText("");
+				ppp.setText("");	
+				
+			}
+		}
+		catch(NumberFormatException q){
+			JOptionPane.showMessageDialog(null,"invalid","Note",JOptionPane.WARNING_MESSAGE);
+		}
+	}
+
+}
